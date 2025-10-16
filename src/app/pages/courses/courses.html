@@ -2,10 +2,10 @@
 
 <table>
     <thead>
-        <th>Kurskod</th>
-        <th>Kursnamn</th>
-        <th>Poäng</th>
-        <th>Ämne</th>
+        <th (click)="sortByCourseCode()">Kurskod</th>
+        <th (click)="sortByCourseName()">Kursnamn</th>
+        <th (click)="sortByPoints()">Poäng</th>
+        <th (click)="sortBySubject()">Ämne</th>
     </thead>
     <tbody>
         <tr *ngFor="let course of courses">

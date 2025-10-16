@@ -27,7 +27,26 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
     this.courseService.getCourses().subscribe(data => {
       this.courses = data;
-      console.log(this.courses);
     })
+  }
+
+  /**Sorts data by course code */
+  sortByCourseCode(): void {
+    this.courses.sort((a, b) => a.courseCode.localeCompare(b.courseCode));
+  }
+
+  /** Sorts data by course name */
+  sortByCourseName(): void {
+    this.courses.sort((a, b) => a.courseName.localeCompare(b.courseName));
+  }
+
+  /** Sorts data by course points */
+  sortByPoints(): void {
+    this.courses.sort((a, b) => a.points - b.points);
+  }
+
+  /** Sorts data by course subject */
+  sortBySubject(): void {
+    this.courses.sort((a, b) => a.subject.localeCompare(b.subject));
   }
 }
