@@ -1,1 +1,18 @@
-<p>courses works!</p>
+<h2>Sök kurser</h2>
+
+<table>
+    <thead>
+        <th>Kurskod</th>
+        <th>Kursnamn</th>
+        <th>Poäng</th>
+        <th>Ämne</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let course of courses">
+            <td> {{ course.courseCode }}</td>
+            <td> {{ course.courseName }}</td>
+            <td> {{ course.points }}</td>
+            <td> {{ course.subject }}</td>
+        </tr>
+    </tbody>
+</table>
