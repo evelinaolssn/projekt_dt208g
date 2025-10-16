@@ -1,5 +1,7 @@
 <h2>Sök kurser</h2>
 
+<input type="text" placeholder="Sök efter kurskod eller kursnamn" [(ngModel)]="searchField" />
+
 <table>
     <thead>
         <th (click)="sortByCourseCode()">Kurskod</th>
@@ -8,7 +10,7 @@
         <th (click)="sortBySubject()">Ämne</th>
     </thead>
     <tbody>
-        <tr *ngFor="let course of courses">
+        <tr *ngFor="let course of filteredCourses">
             <td> {{ course.courseCode }}</td>
             <td> {{ course.courseName }}</td>
             <td> {{ course.points }}</td>
