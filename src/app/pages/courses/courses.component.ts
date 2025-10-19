@@ -53,7 +53,6 @@ export class CoursesComponent implements OnInit {
       this.subjects = Array.from(new Set(this.courses.map(c => c.subject))).sort();
 
       const levels = Array.from(new Set(this.courses.map(c => c.level)));
-      console.log(levels);
     })
   }
 
@@ -98,5 +97,13 @@ export class CoursesComponent implements OnInit {
       (this.selectSubject === 'Alla ämnen' || course.subject === this.selectSubject) &&
       (noLevelSelected || this.selectLevels[course.level as keyof Levels])
     );
+  }
+
+  /**
+   * Checks number of courses based on filtered result
+   * @returns {number}
+   */
+  get courseNumber(): number {
+    return this.filteredCourses.length;
   }
 }
