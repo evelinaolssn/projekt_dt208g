@@ -2,6 +2,12 @@
 
 <input type="text" placeholder="Sök efter kurskod eller kursnamn" [(ngModel)]="searchField" />
 
+<select [(ngModel)]="selectSubject">
+    <option value="Alla ämnen">Alla ämnen</option>
+    <option *ngFor="let subject of subjects" [value]="subject"> {{ subject }}
+    </option>
+</select>
+
 <table>
     <thead>
         <th (click)="sortByCourseCode()">Kurskod</th>

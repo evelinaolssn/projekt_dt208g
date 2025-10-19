@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 /**
  * Component for displaying courses from JSON data
  * Fetches courses from CourseService 
+ * Filtering and sorting functionalities based on user input
  */
 @Component({
   selector: 'app-courses',
@@ -19,16 +20,24 @@ export class CoursesComponent implements OnInit {
   courses: Course[] = [];
   searchField: string = '';
 
+  subjects: string[] = [];
+  selectSubject: string = 'Alla ämnen';
+
   /**
    * Connects the component to CourseService
    * @param courseService Service for fetching courses
    */
   constructor(private courseService: CourseService) { }
 
-  /** Subscribes to the service to fetch courses*/
+  /** 
+   * Subscribes to the service to fetch courses
+   * Collects unique subjects from dropdown
+  */
   ngOnInit(): void {
     this.courseService.getCourses().subscribe(data => {
       this.courses = data;
+
+      this.subjects = Array.from(new Set(this.courses.map(c => c.subject))).sort();
     })
   }
 
@@ -59,8 +68,9 @@ export class CoursesComponent implements OnInit {
    */
   get filteredCourses(): Course[] {
     return this.courses.filter(course =>
-      course.courseCode.toLowerCase().includes(this.searchField.toLowerCase()) ||
-      course.courseName.toLowerCase().includes(this.searchField.toLowerCase())
+      (course.courseCode.toLowerCase().includes(this.searchField.toLowerCase()) ||
+        course.courseName.toLowerCase().includes(this.searchField.toLowerCase())) &&
+      (this.selectSubject === 'Alla ämnen' || course.subject === this.selectSubject)
     );
   }
 }
