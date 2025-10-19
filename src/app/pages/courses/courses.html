@@ -8,12 +8,40 @@
     </option>
 </select>
 
+<div>
+    <label>
+        <input type="checkbox" [(ngModel)]="selectLevels.GR" /> Grundnivå
+    </label>
+
+    <label>
+        <input type="checkbox" [(ngModel)]="selectLevels.AV" />Avancerad nivå
+    </label>
+
+    <label>
+        <input type="checkbox" [(ngModel)]="selectLevels.BE" />Behörighetsgivande
+    </label>
+
+    <label>
+        <input type="checkbox" [(ngModel)]="selectLevels.FO" /> Forskarnivå
+    </label>
+
+    <label>
+        <input type="checkbox" [(ngModel)]="selectLevels.X" /> Övrigt
+    </label>
+</div>
+
+<div>
+
+</div>
+
 <table>
     <thead>
-        <th (click)="sortByCourseCode()">Kurskod</th>
-        <th (click)="sortByCourseName()">Kursnamn</th>
-        <th (click)="sortByPoints()">Poäng</th>
-        <th (click)="sortBySubject()">Ämne</th>
+        <tr>
+            <th (click)="sortByCourseCode()">Kurskod</th>
+            <th (click)="sortByCourseName()">Kursnamn</th>
+            <th (click)="sortByPoints()">Poäng</th>
+            <th (click)="sortBySubject()">Ämne</th>
+        </tr>
     </thead>
     <tbody>
         <tr *ngFor="let course of filteredCourses">

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Course } from '../../course';
 import { CourseService } from '../../services/course.service';
 import { FormsModule } from '@angular/forms';
+import { Levels } from '../../level';
 
 /**
  * Component for displaying courses from JSON data
@@ -16,12 +17,24 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './courses.html',
   styleUrl: './courses.css'
 })
+
 export class CoursesComponent implements OnInit {
   courses: Course[] = [];
   searchField: string = '';
 
   subjects: string[] = [];
   selectSubject: string = 'Alla ämnen';
+
+  /**
+   * Levels of courses is false as default
+   */
+  selectLevels: Levels = {
+    GR: false,
+    AV: false,
+    BE: false,
+    FO: false,
+    X: false
+  };
 
   /**
    * Connects the component to CourseService
@@ -38,6 +51,9 @@ export class CoursesComponent implements OnInit {
       this.courses = data;
 
       this.subjects = Array.from(new Set(this.courses.map(c => c.subject))).sort();
+
+      const levels = Array.from(new Set(this.courses.map(c => c.level)));
+      console.log(levels);
     })
   }
 
@@ -64,13 +80,23 @@ export class CoursesComponent implements OnInit {
   /**
    * Filters courses based on searchinput
    * Matches if input is found in course code or course name
+   * All course levels are included as default
+   * Filters courses if level is selected by user
    * @returns Filtered array of courses
    */
   get filteredCourses(): Course[] {
+    const noLevelSelected =
+      !this.selectLevels.GR &&
+      !this.selectLevels.AV &&
+      !this.selectLevels.BE &&
+      !this.selectLevels.FO &&
+      !this.selectLevels.X;
+
     return this.courses.filter(course =>
       (course.courseCode.toLowerCase().includes(this.searchField.toLowerCase()) ||
         course.courseName.toLowerCase().includes(this.searchField.toLowerCase())) &&
-      (this.selectSubject === 'Alla ämnen' || course.subject === this.selectSubject)
+      (this.selectSubject === 'Alla ämnen' || course.subject === this.selectSubject) &&
+      (noLevelSelected || this.selectLevels[course.level as keyof Levels])
     );
   }
 }
