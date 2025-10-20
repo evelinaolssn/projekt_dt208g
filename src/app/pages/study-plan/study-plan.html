@@ -1,1 +1,20 @@
-<p>study-plan works!</p>
+<h2>Mitt ramschema</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Kurskod</th>
+            <th>Kursnamn</th>
+            <th>Poäng</th>
+            <th>Ämne</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let course of studyPlan">
+            <td>{{ course.courseCode }}</td>
+            <td>{{ course.courseName }}</td>
+            <td>{{ course.points }}</td>
+            <td>{{ course.subject }}</td>
+        </tr>
+    </tbody>
+</table>
