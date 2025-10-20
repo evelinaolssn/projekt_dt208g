@@ -4,6 +4,7 @@ import { Course } from '../../course';
 import { CourseService } from '../../services/course.service';
 import { FormsModule } from '@angular/forms';
 import { Levels } from '../../level';
+import { StudyPlanService } from '../../services/study-plan.service';
 
 /**
  * Component for displaying courses from JSON data
@@ -40,7 +41,7 @@ export class CoursesComponent implements OnInit {
    * Connects the component to CourseService
    * @param courseService Service for fetching courses
    */
-  constructor(private courseService: CourseService) { }
+  constructor(private courseService: CourseService, private studyPlanService: StudyPlanService) { }
 
   /** 
    * Subscribes to the service to fetch courses
@@ -56,7 +57,20 @@ export class CoursesComponent implements OnInit {
     })
   }
 
-  /**Sorts data by course code */
+  /**
+   * Attempts to add course to the study plan using StudyPlanService 
+   * Alert if course is already added 
+   * @param course The added course
+   */
+  addToPlan(course: Course): void {
+    if (this.studyPlanService.addCourse(course)) {
+      console.log("Tillagd", this.studyPlanService.getStudyPlan())
+    } else {
+      alert(`${course.courseName} (${course.courseCode}) är redan tillagd i ditt ramschema.`)
+    }
+  }
+
+  /** Sorts data by course code */
   sortByCourseCode(): void {
     this.courses.sort((a, b) => a.courseCode.localeCompare(b.courseCode));
   }
