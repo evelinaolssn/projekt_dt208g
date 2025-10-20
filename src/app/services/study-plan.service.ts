@@ -37,4 +37,12 @@ export class StudyPlanService {
   removeCourse(course: Course): void {
     this.studyPlan = this.studyPlan.filter(c => c.courseCode !== course.courseCode)
   }
+
+  /**
+   * Calculates totat points of courses in study plan 
+   * @returns {number} Sum of points from all courses
+   */
+  getPoints(): number {
+    return this.studyPlan.reduce((sum, course) => sum + course.points, 0);
+  }
 }

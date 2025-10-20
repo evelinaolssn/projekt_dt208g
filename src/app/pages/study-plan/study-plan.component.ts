@@ -31,4 +31,12 @@ export class StudyPlanComponent {
   removeFromPlan(course: Course): void {
     this.studyPlanService.removeCourse(course);
   }
+
+  /**
+   * Gets total points of courses
+   * @returns {number} Sum of points
+   */
+  get Points(): number {
+    return this.studyPlanService.getPoints();
+  }
 }
