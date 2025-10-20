@@ -64,7 +64,6 @@ export class CoursesComponent implements OnInit {
    */
   addToPlan(course: Course): void {
     if (this.studyPlanService.addCourse(course)) {
-      console.log("Tillagd", this.studyPlanService.getStudyPlan())
     } else {
       alert(`${course.courseName} (${course.courseCode}) är redan tillagd i ditt ramschema.`)
     }

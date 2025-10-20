@@ -29,4 +29,12 @@ export class StudyPlanService {
     }
     return false;
   }
+
+  /**
+   * Removes course from studyplan array
+   * @param course Removed course
+   */
+  removeCourse(course: Course): void {
+    this.studyPlan = this.studyPlan.filter(c => c.courseCode !== course.courseCode)
+  }
 }

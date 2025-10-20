@@ -23,4 +23,12 @@ export class StudyPlanComponent {
   get studyPlan(): Course[] {
     return this.studyPlanService.getStudyPlan();
   }
+
+  /**
+   * Removes a course from studyplan using studyPlanService
+   * @param course Removed course
+   */
+  removeFromPlan(course: Course): void {
+    this.studyPlanService.removeCourse(course);
+  }
 }

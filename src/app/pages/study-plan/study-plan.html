@@ -15,6 +15,7 @@
             <td>{{ course.courseName }}</td>
             <td>{{ course.points }}</td>
             <td>{{ course.subject }}</td>
+            <td><button (click)="removeFromPlan(course)">Ta bort</button></td>
         </tr>
     </tbody>
 </table>
