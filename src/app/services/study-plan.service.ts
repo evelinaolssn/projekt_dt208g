@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../course';
 
+/**
+ * Service for managing study plan and save/load from localStorage
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class StudyPlanService {
   private studyPlan: Course[] = [];
 
-  constructor() { }
+  constructor() {
+    this.loadStudyPlan();
+  }
 
   /**
    * Retrieves the current study plan
@@ -25,6 +30,7 @@ export class StudyPlanService {
   addCourse(course: Course): boolean {
     if (!this.studyPlan.find(c => c.courseCode === course.courseCode)) {
       this.studyPlan.push(course);
+      this.saveStudyPlan();
       return true;
     }
     return false;
@@ -36,6 +42,7 @@ export class StudyPlanService {
    */
   removeCourse(course: Course): void {
     this.studyPlan = this.studyPlan.filter(c => c.courseCode !== course.courseCode)
+    this.saveStudyPlan();
   }
 
   /**
@@ -44,5 +51,22 @@ export class StudyPlanService {
    */
   getPoints(): number {
     return this.studyPlan.reduce((sum, course) => sum + course.points, 0);
+  }
+
+  /**
+   * Saves current study plan to localStorage
+   */
+  private saveStudyPlan(): void {
+    localStorage.setItem("studyPlan", JSON.stringify(this.studyPlan));
+  }
+
+  /**
+   * Loads studyplan from localStorage 
+   */
+  private loadStudyPlan(): void {
+    const data = localStorage.getItem("studyPlan");
+    if (data) {
+      this.studyPlan = JSON.parse(data);
+    }
   }
 }
