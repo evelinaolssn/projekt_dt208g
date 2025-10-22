@@ -1,0 +1,58 @@
+/*Navigation layout on desktop*/
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    padding: 0.8rem;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in;
+}
+
+nav a:hover {
+    background-color: rgba(97, 101, 115, 0.5);
+}
+
+/*Hamburger menu button style with non visibility on desktop*/
+.hamburgerMenu {
+    display: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 2rem;
+}
+
+/*Responsive design for screens smaller than 769px*/
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        width: 200px;
+        position: absolute;
+        top: 90px;
+        right: 0;
+        padding: 2rem;
+        background-color: rgb(12, 12, 65);
+        border-bottom-left-radius: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+    }
+
+    nav.open ul {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .hamburgerMenu {
+        display: inline-block;
+    }
+}

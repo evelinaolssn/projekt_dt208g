@@ -1,4 +1,5 @@
-<nav>
+<nav [class.open]="menuOpen">
+    <button class="hamburgerMenu" (click)="toggleMenu()">☰</button>
     <ul>
         <li><a routerLink="/home">Startsida</a></li>
         <li><a routerLink="/courses">Kurser</a></li>

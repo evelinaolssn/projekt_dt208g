@@ -9,5 +9,12 @@ import { RouterLink } from "@angular/router";
   styleUrl: './nav.css'
 })
 export class NavComponent {
+  menuOpen = false;
 
+  /**
+   * Toggles hamburger menu open/closed
+   */
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
 }
