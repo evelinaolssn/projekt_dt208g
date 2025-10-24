@@ -1,3 +1,4 @@
+<main>
 <h1>Sök kurser</h1>
 
 <input type="text" placeholder="Sök efter kurskod eller kursnamn" [(ngModel)]="searchField" />
@@ -32,13 +33,14 @@
 
 <p>Antal kurser: {{ courseNumber }}</p>
 
-<table>
+<table class="table-style">
     <thead>
         <tr>
             <th (click)="sortByCourseCode()">Kurskod</th>
             <th (click)="sortByCourseName()">Kursnamn</th>
             <th (click)="sortByPoints()">Poäng</th>
             <th (click)="sortBySubject()">Ämne</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -51,3 +53,4 @@
         </tr>
     </tbody>
 </table>
+</main>
