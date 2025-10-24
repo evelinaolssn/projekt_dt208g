@@ -18,6 +18,15 @@ header {
     color: rgb(255, 255, 255);
 }
 
+h1 {
+    color: rgb(44, 43, 50);
+    text-align: left;
+    font-size: 2rem;
+    color: rgb(44, 43, 50);
+    border-bottom: 3px solid rgb(157, 137, 137);
+    margin: 3.5rem 0 1.5rem 0;
+}
+
 /*Footer style*/
 footer {
     background-color: rgb(12, 12, 65);
@@ -25,4 +34,11 @@ footer {
     text-align: center;
     padding: 2rem;
     margin-top: 3rem;
+}
+
+/*Reduce size of logotype on smaller screens*/
+@media (max-width: 705px) {
+    .logo {
+        width: 200px;
+    }
 }
