@@ -1,56 +1,56 @@
-<main>
-<h1>Sök kurser</h1>
+<section>
+    <h1>Sök kurser</h1>
 
-<input type="text" placeholder="Sök efter kurskod eller kursnamn" [(ngModel)]="searchField" />
+    <input type="text" placeholder="Sök efter kurskod eller kursnamn" [(ngModel)]="searchField" />
 
-<select [(ngModel)]="selectSubject">
-    <option value="Alla ämnen">Alla ämnen</option>
-    <option *ngFor="let subject of subjects" [value]="subject"> {{ subject }}
-    </option>
-</select>
+    <select [(ngModel)]="selectSubject">
+        <option value="Alla ämnen">Alla ämnen</option>
+        <option *ngFor="let subject of subjects" [value]="subject"> {{ subject }}
+        </option>
+    </select>
 
-<div class="checkbox">
-    <label>
-        <input type="checkbox" [(ngModel)]="selectLevels.GR" /> Grundnivå
-    </label>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" [(ngModel)]="selectLevels.GR" /> Grundnivå
+        </label>
 
-    <label>
-        <input type="checkbox" [(ngModel)]="selectLevels.AV" />Avancerad nivå
-    </label>
+        <label>
+            <input type="checkbox" [(ngModel)]="selectLevels.AV" />Avancerad nivå
+        </label>
 
-    <label>
-        <input type="checkbox" [(ngModel)]="selectLevels.BE" />Behörighetsgivande
-    </label>
+        <label>
+            <input type="checkbox" [(ngModel)]="selectLevels.BE" />Behörighetsgivande
+        </label>
 
-    <label>
-        <input type="checkbox" [(ngModel)]="selectLevels.FO" /> Forskarnivå
-    </label>
+        <label>
+            <input type="checkbox" [(ngModel)]="selectLevels.FO" /> Forskarnivå
+        </label>
 
-    <label>
-        <input type="checkbox" [(ngModel)]="selectLevels.X" /> Övrigt
-    </label>
-</div>
+        <label>
+            <input type="checkbox" [(ngModel)]="selectLevels.X" /> Övrigt
+        </label>
+    </div>
 
-<p>Antal kurser: {{ courseNumber }}</p>
+    <p>Antal kurser: {{ courseNumber }}</p>
 
-<table class="table-style">
-    <thead>
-        <tr>
-            <th (click)="sortByCourseCode()">Kurskod</th>
-            <th (click)="sortByCourseName()">Kursnamn</th>
-            <th (click)="sortByPoints()">Poäng</th>
-            <th (click)="sortBySubject()">Ämne</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let course of filteredCourses">
-            <td> {{ course.courseCode }}</td>
-            <td> {{ course.courseName }}</td>
-            <td> {{ course.points }}</td>
-            <td> {{ course.subject }}</td>
-            <td><button (click)="addToPlan(course)">Lägg till</button></td>
-        </tr>
-    </tbody>
-</table>
-</main>
+    <table class="table-style">
+        <thead>
+            <tr>
+                <th (click)="sortByCourseCode()">Kurskod</th>
+                <th (click)="sortByCourseName()">Kursnamn</th>
+                <th (click)="sortByPoints()">Poäng</th>
+                <th (click)="sortBySubject()">Ämne</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let course of filteredCourses">
+                <td> {{ course.courseCode }}</td>
+                <td> {{ course.courseName }}</td>
+                <td> {{ course.points }}</td>
+                <td> {{ course.subject }}</td>
+                <td><button (click)="addToPlan(course)">Lägg till</button></td>
+            </tr>
+        </tbody>
+    </table>
+</section>

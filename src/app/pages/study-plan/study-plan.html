@@ -1,26 +1,26 @@
-<main>
-<h1>Mitt ramschema</h1>
+<section>
+    <h1>Mitt ramschema</h1>
 
-<p>Antal högskolepoäng: {{ Points }}</p>
+    <p>Antal högskolepoäng: {{ Points }}</p>
 
-<table class="table-style">
-    <thead class="hidden-head">
-        <tr>
-            <th>Kurskod</th>
-            <th>Kursnamn</th>
-            <th>Poäng</th>
-            <th>Ämne</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let course of studyPlan">
-            <td>{{ course.courseCode }}</td>
-            <td>{{ course.courseName }}</td>
-            <td>{{ course.points }}</td>
-            <td>{{ course.subject }}</td>
-            <td><button (click)="removeFromPlan(course)">Ta bort</button></td>
-        </tr>
-    </tbody>
-</table>
-</main>
+    <table class="table-style">
+        <thead class="hidden-head">
+            <tr>
+                <th>Kurskod</th>
+                <th>Kursnamn</th>
+                <th>Poäng</th>
+                <th>Ämne</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let course of studyPlan">
+                <td>{{ course.courseCode }}</td>
+                <td>{{ course.courseName }}</td>
+                <td>{{ course.points }}</td>
+                <td>{{ course.subject }}</td>
+                <td><button (click)="removeFromPlan(course)">Ta bort</button></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
