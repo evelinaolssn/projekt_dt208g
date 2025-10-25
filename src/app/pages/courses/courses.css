@@ -1,0 +1,24 @@
+/*Input and dropdown menu style*/
+input[type="text"],
+select {
+    padding: 0.6rem 1rem;
+    margin: 0.5rem 1rem;
+    border: 1px solid #908b8b;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 20rem;
+    box-sizing: border-box;
+}
+
+/*Checkbox styling*/
+.checkbox label {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+}
+
+.checkbox input {
+    margin-right: 6px;
+    accent-color: rgb(12, 12, 65);
+    cursor: pointer;
+}
