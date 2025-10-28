@@ -24,5 +24,12 @@ Syftet är att skapa en webbapplikation med **Angular** där användaren kan sö
   - Ta bort kurser från ramschemat.
 - **Responsiv design** så att applikationen fungerar på både stora och små skärmar.
 
+## Bedömning
+Jag har främst satsat på att uppfylla grundkraven i uppgiften, men lade bland annat 
+till startsida och funktion för sortering av nivårer för en mer fullständig webbplats.
+ 
+
+
+
 
 
